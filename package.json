@@ -1,0 +1,19 @@
+{
+  "name": "koa-dot",
+  "version": "0.0.0",
+  "description": "doT for koa with caching and layout support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epoberezkin/koa-dot.git"
+  },
+  "author": "Evgeny Poberezkin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epoberezkin/koa-dot/issues"
+  },
+  "homepage": "https://github.com/epoberezkin/koa-dot"
+}
