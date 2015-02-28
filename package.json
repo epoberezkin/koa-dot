@@ -1,6 +1,6 @@
 {
   "name": "koa-dot",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "doT for koa with caching and layout support",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/epoberezkin/koa-dot/issues"
   },
-  "homepage": "https://github.com/epoberezkin/koa-dot"
+  "homepage": "https://github.com/epoberezkin/koa-dot",
+  "dependencies": {
+    "dot": "^1.0.3"
+  }
 }
