@@ -65,3 +65,7 @@ home.dot
 ```
 <div>Hello world!</div>
 ```
+
+#### License
+
+The MIT License (see LICENSE).

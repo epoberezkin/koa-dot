@@ -1,7 +1,7 @@
 {
   "name": "koa-dot",
-  "version": "0.1.0",
-  "description": "doT for koa with caching and layout support",
+  "version": "0.1.1",
+  "description": "doT for koa with pre-processing and layout support",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
