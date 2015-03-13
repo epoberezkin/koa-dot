@@ -9,6 +9,7 @@ module.exports = function(options) {
 
     return function *views(next) {
         this.render = render;
+        this.render.templates = templates;
         yield next;
 
 

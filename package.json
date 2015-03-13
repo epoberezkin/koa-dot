@@ -1,6 +1,6 @@
 {
   "name": "koa-dot",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "doT for koa with pre-processing and layout support",
   "keywords": [
     "koa",
