@@ -33,6 +33,9 @@ app
   .use(dot({
     // other options supported by doT.process can be passed here
     path: './views',
+    // or path: ['./views', './shared'],
+    // .dot template names across all folders should be unique,
+    // .def files are used only from the current folder (names can repeat across folders)
     layout: true, // false by default, can be layout view name
     // body: 'body', // 'body' is default, only used with layout
     interpolation: { start: '<%', end: '%>' } // allows to replace '{{' and '}}'

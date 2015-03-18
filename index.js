@@ -4,8 +4,20 @@ var doT = require('dot');
 module.exports = function(options) {
     var layout = options.layout === true ? 'layout' : options.layout
         , body = options.body || 'body';
-    setInterpolationSymbols(options);
-    var templates = doT.process(options);
+    options = setInterpolationSymbols(options);
+
+    var templates;
+    var paths = options.path;
+    if (Array.isArray(paths)) {
+        templates = {};
+        paths.forEach(function(path) {
+            options.path = path;
+            copy(doT.process(options), templates);
+        });
+        options.path = paths;
+    } else
+        templates = doT.process(options);
+
 
     return function *views(next) {
         this.render = render;
@@ -34,6 +46,7 @@ copy(doT, module.exports); // version, templateSettings, template, compile, proc
 
 function setInterpolationSymbols(options) {
     if (options.interpolation) {
+        options = copy(options);
         var regexpStringPattern = /^\/(.*)\/([gimy]*)$/;
         var interpolations = {};
         var startSymbol = _regexStr(options.interpolation.start)
@@ -54,6 +67,7 @@ function setInterpolationSymbols(options) {
             settings = copy(options.templateSettings, settings);
         options.templateSettings = copy(interpolations, settings);
     }
+    return options;
 
 
     function _regexStr(str) {
