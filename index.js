@@ -4,19 +4,8 @@ var doT = require('dot');
 module.exports = function(options) {
     var layout = options.layout === true ? 'layout' : options.layout
         , body = options.body || 'body';
-    options = setInterpolationSymbols(options);
 
-    var templates;
-    var paths = options.path;
-    if (Array.isArray(paths)) {
-        templates = {};
-        paths.forEach(function(path) {
-            options.path = path;
-            copy(doT.process(options), templates);
-        });
-        options.path = paths;
-    } else
-        templates = doT.process(options);
+    var templates = process(options);
 
 
     return function *views(next) {
@@ -42,6 +31,26 @@ module.exports = function(options) {
 
 
 copy(doT, module.exports); // version, templateSettings, template, compile, process
+module.exports.process = process;
+
+
+function process(options) {
+    options = setInterpolationSymbols(options);
+
+    var templates;
+    var paths = options.path;
+    if (Array.isArray(paths)) {
+        templates = {};
+        paths.forEach(function(path) {
+            options.path = path;
+            copy(doT.process(options), templates);
+        });
+        options.path = paths;
+    } else
+        templates = doT.process(options);
+
+    return templates;
+}
 
 
 function setInterpolationSymbols(options) {

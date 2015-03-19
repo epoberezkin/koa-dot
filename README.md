@@ -22,6 +22,9 @@ yield this.render('view');
 // ...
 ```
 
+In addition to options that doT supports, process function supports 'interpolation' option and multiple paths (as in middleware).
+
+
 #### Middleware
 
 ```
