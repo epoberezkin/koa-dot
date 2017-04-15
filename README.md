@@ -17,8 +17,8 @@ var subviews = process({ path: './views/subviews' });
 
 // inside middleware
 // ...
-this.state.subviews = subviews;
-yield this.render('view');
+ctx.state.subviews = subviews;
+await ctx.render('view');
 // ...
 ```
 
@@ -43,10 +43,10 @@ app
     // body: 'body', // 'body' is default, only used with layout
     interpolation: { start: '<%', end: '%>' } // allows to replace '{{' and '}}'
   }))
-  .use(function *() {
-    this.state.title = 'Home';
-    yield this.render('home');
-    // data can be passed as 2nd argument, this.state is used by default
+  .use(async function(ctx) {
+    ctx.state.title = 'Home';
+    await ctx.render('home');
+    // data can be passed as 2nd argument, ctx.state is used by default
   });
 ```
 

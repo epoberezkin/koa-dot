@@ -1,20 +1,17 @@
 var doT = require('dot');
 
-
 module.exports = function(options) {
     var layout = options.layout === true ? 'layout' : options.layout
         , body = options.body || 'body';
 
     var templates = process(options);
 
+    return function views(ctx, next) {
+        ctx.render = render;
+        ctx.render.templates = templates;
+        return next();
 
-    return function *views(next) {
-        this.render = render;
-        this.render.templates = templates;
-        yield next;
-
-
-        function *render(view, state) {
+        function render(view, state) {
             state = state || this.state;
             var html = templates[view](state);
 
@@ -25,6 +22,8 @@ module.exports = function(options) {
                 this.body = html;
 
             this.type = 'text/html';
+
+            return Promise.resolve();
         }
     }
 }
